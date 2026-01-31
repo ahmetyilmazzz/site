@@ -131,6 +131,8 @@ ul {
 .logo {
     display: flex;
     align-items: center;
+    gap: 15px;
+    /* Space between logo and text */
 }
 
 .navbar-logo {
@@ -144,8 +146,8 @@ ul {
     font-size: 1.5rem;
     font-weight: 700;
     color: #d35400;
-    margin-left: -10px;
-    /* Negative margin to pull text closer */
+    margin-left: 0;
+    /* Removed negative margin */
     font-family: 'Playfair Display', serif;
     letter-spacing: 1px;
 }
