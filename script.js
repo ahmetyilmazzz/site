@@ -34,4 +34,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add fade-in classes to elements you want to animate
     // Example usage:
     // document.querySelectorAll('.card').forEach((el) => observer.observe(el));
+
+    // Smart Back Button
+    document.querySelectorAll('.back-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Check if there is a referrer and it matches our domain (simple check)
+            // or just ensure we have history to go back to.
+            // Using document.referrer is safer to ensure we don't go back to an empty page or different site if opened in new tab
+            if (document.referrer.includes(window.location.hostname)) {
+                e.preventDefault();
+                history.back();
+            }
+            // If no internal referrer, let the default href="index.html" work
+        });
+    });
 });
