@@ -563,25 +563,7 @@ footer {
         display: flex;
     }
 
-    .nav-links li {
-        width: 100%;
-        margin: 0;
-    }
 
-    .nav-links a {
-        display: block;
-        width: 100%;
-        margin: 0;
-        padding: 15px;
-        border: 1px solid var(--primary);
-        border-bottom: none;
-        border-radius: 0;
-        background-color: rgba(255, 255, 255, 0.05);
-    }
-
-    .nav-links li:last-child a {
-        border-bottom: 1px solid var(--primary);
-    }
 
     .hamburger {
         display: block;
