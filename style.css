@@ -125,6 +125,55 @@ ul {
     align-items: center;
     max-width: 95%;
     /* Wider container for navbar to push logo left */
+    gap: 20px;
+}
+
+.nav-extras {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+    /* Push extras to the right if needed, or adjust */
+    margin-right: 20px;
+}
+
+.nav-search {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.8);
+    font-family: inherit;
+    width: 200px;
+    transition: var(--transition);
+}
+
+.nav-search:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 5px rgba(243, 156, 18, 0.5);
+}
+
+.nav-phone {
+    font-weight: 600;
+    color: var(--primary);
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
+
+.nav-phone span {
+    color: var(--text-main);
+    font-size: 0.8rem;
+}
+
+.nav-phone a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.nav-phone a:hover {
+    text-decoration: underline;
 }
 
 .logo {
@@ -264,9 +313,9 @@ ul {
 }
 
 .icon-box {
-    background-color: #fff8e1;
-    /* Light yellow bg for icon */
-    color: #d35400;
+    background-color: rgba(243, 156, 18, 0.1);
+    /* Transparent primary */
+    color: var(--primary);
     width: 50px;
     height: 50px;
     display: flex;
@@ -279,14 +328,13 @@ ul {
 
 .info-box h3 {
     font-size: 1.2rem;
-    color: #333;
-    /* Dark title */
+    color: var(--text-main);
     margin-bottom: 5px;
 }
 
 .info-box p,
 .info-box a {
-    color: #666;
+    color: var(--text-muted);
     font-size: 1rem;
     line-height: 1.5;
     display: block;
@@ -540,13 +588,14 @@ ul {
 /* Contact Section */
 .contact {
     padding: 80px 0;
-    background-color: #ffffff;
+    background-color: var(--dark-bg);
     text-align: center;
 }
 
 .contact-info {
     font-size: 1.2rem;
     margin-bottom: 2rem;
+    color: var(--text-main);
 }
 
 .contact-item {
@@ -573,7 +622,8 @@ footer {
         /* simple hide for now, script will toggle */
         flex-direction: column;
         position: absolute;
-        top: 70px;
+        top: 80px;
+        /* Increased top to account for potentially taller header */
         right: 0;
         background-color: var(--nav-bg);
         width: 100%;
@@ -581,11 +631,14 @@ footer {
         padding: 20px 0;
     }
 
+    .nav-extras {
+        display: none;
+        /* Hide extras on mobile menu, or move them inside nav-links if requested */
+    }
+
     .nav-links.active {
         display: flex;
     }
-
-
 
     .hamburger {
         display: block;
