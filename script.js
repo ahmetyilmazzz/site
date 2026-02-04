@@ -48,4 +48,55 @@ document.addEventListener('DOMContentLoaded', () => {
             // If no internal referrer, let the default href="index.html" work
         });
     });
+    // Search Functionality
+    const searchInputs = document.querySelectorAll('.nav-search');
+
+    searchInputs.forEach(input => {
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const query = input.value.trim().toLowerCase();
+                if (query) {
+                    // Redirect to menu.html with search parameter
+                    // If we are already on menu.html, just reload/run search (or better, just update URL and run search function)
+                    // For simplicity, we'll assign location.
+                    window.location.href = `menu.html?search=${encodeURIComponent(query)}`;
+                }
+            }
+        });
+    });
+
+    // Check for search parameter on page load (specifically for menu.html)
+    if (window.location.pathname.includes('menu.html')) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchQuery = urlParams.get('search');
+
+        if (searchQuery) {
+            const term = searchQuery.toLowerCase();
+            const items = document.querySelectorAll('.card, .menu-item');
+            let found = false;
+
+            items.forEach(item => {
+                const title = item.querySelector('h4, h3')?.textContent.toLowerCase() || '';
+                const desc = item.querySelector('p')?.textContent.toLowerCase() || '';
+
+                if (title.includes(term) || desc.includes(term)) {
+                    if (!found) {
+                        // Scroll to first match
+                        item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        found = true;
+                    }
+                    // Highlight match
+                    item.style.border = '2px solid var(--primary)';
+                    item.style.boxShadow = '0 0 15px rgba(243, 156, 18, 0.5)';
+
+                    // Remove highlight after a few seconds
+                    setTimeout(() => {
+                        item.style.border = '';
+                        item.style.boxShadow = '';
+                    }, 3000);
+                }
+            });
+        }
+    }
 });
